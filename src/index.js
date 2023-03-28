@@ -14,7 +14,6 @@ const refs = {
 refs.inputSearchBox.addEventListener('input', debounce(handleSearchCountry, DEBOUNCE_DELAY))
 
 function handleSearchCountry(event) {
-    console.log(event);
     event.preventDefault();
     const seekedCountry = refs.inputSearchBox.value.trim();//отримую значення яке ввів користувач в поле інпут
     if (seekedCountry === null) {
@@ -30,13 +29,13 @@ function handleSearchCountry(event) {
 //якщо від 2-10, то видає  список країн ( складається з прапора та назви країни)
 //якщо одна країна - масив (прапор, назва, столиця, населення і мови.)
 function createListOfSearchedCountries(data) {
-    if (data.lenght > 10) {
+    if (data.length > 10) {
         Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
-    } else if (data.lenght >= 2 && data.lenght <= 10) {
+    } else if (data.length >= 2 && data.lenght <= 10) {
         //тут передати функцію яка видає  список країн
-        createCountryListMarkup();
-    } else if (data.lenght === 1) {
-        createCountryInfoMarkup();
+        createCountryListMarkup(data);
+    } else if (data.length === 1) {
+        createCountryInfoMarkup(data[0]);//передає перший елемент з масиву
     }
 
 
