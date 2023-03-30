@@ -46,7 +46,7 @@ function handleSearchCountry(event) {
 
 function createCountryListMarkup(data) {
     const countryMarkup = data.map(({ name, flags }) => {
-        console.log(data);
+
         return `<li class="country_list_item">
     <img class="country_img" src="${flags.svg}" alt="${name}" width="100">
     <p class="country_name">${name.official}</p>
