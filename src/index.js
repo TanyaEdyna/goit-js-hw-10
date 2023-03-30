@@ -62,9 +62,9 @@ function createCountryInfoMarkup(data) {
         <img class="country_img" src="${flags.svg}" alt="${name}" width="100">
         <p class="country_name">${name.official}</p>
         <ul class="country_info_list">
-            <li class="country_info_item">Capital <span class="country_info_capital">${capital}</span></li>
-            <li class="country_info_item">Population <span class="country_info_population">${population}</span></li>
-            <li class="country_info_item">Languages <span class="country_info_languages">${languages.join(', ')}</span></li>
+            <li class="country_info_item"><b>Capital: </b><span class="country_info_capital">${capital}</span></li>
+            <li class="country_info_item"><b>Population: </b><span class="country_info_population">${population}</span></li>
+            <li class="country_info_item"><b>Languages: </b><span class="country_info_languages">${Object.values(languages)}</span></li>
         </ul>`
 };
 
