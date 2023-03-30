@@ -10,6 +10,8 @@ const refs = {
     countryList: document.querySelector('.country-list'),
     countryInfo: document.querySelector('.country-info'),
 }
+const BASE_URL = 'https://restcountries.com/v3.1/name/';
+
 
 refs.inputSearchBox.addEventListener('input', debounce(handleSearchCountry, DEBOUNCE_DELAY))
 
@@ -22,12 +24,7 @@ function handleSearchCountry(event) {
         
         return;
     }
-    console.log(seekedCountry);
-//якщо повертається більше 10 країн, то повідомлення "Too many matches found. Please enter a more specific name."
-//якщо від 2-10, то видає  список країн ( складається з прапора та назви країни)
-//якщо одна країна - масив (прапор, назва, столиця, населення і мови.)
-
-    fetchCountries(seekedCountry).then(data => {
+     fetchCountries(seekedCountry).then(data => {
     
         refs.countryList.innerHTML = '';
         refs.countryInfo.innerHTML = '';
@@ -44,6 +41,7 @@ function handleSearchCountry(event) {
   })
 }
 
+
 function createCountryListMarkup(data) {
     const countryMarkup = data.map(({ name, flags }) => {
 
@@ -57,7 +55,7 @@ function createCountryListMarkup(data) {
 }
 
 function createCountryInfoMarkup(data) {
-    const countryMarkup = data.map(({ name, flags, capital, population, languages }) => {
+    const { name, flags, capital, population, languages } = data;
         return ` 
         <img class="country_img" src="${flags.svg}" alt="${name}" width="100">
         <p class="country_name">${name.official}</p>
@@ -66,9 +64,5 @@ function createCountryInfoMarkup(data) {
             <li class="country_info_item">Population <span class="country_info_population">${population}</span></li>
             <li class="country_info_item">Languages <span class="country_info_languages">${languages.join(', ')}</span></li>
         </ul>`
-    }).join('');
-    return countryMarkup
-    
-}
-
+};
 

@@ -1,5 +1,5 @@
 const BASE_URL = 'https://restcountries.com/v3.1/name/';
-function fetchCountries(name) { 
+export function fetchCountries(name) { 
     fetch(`${BASE_URL}${name}?fields=name,capital,population,flags,languages`)
         .then(response => {
             if (!response.ok) {
@@ -9,6 +9,7 @@ function fetchCountries(name) {
         })
         .then(data => { 
             console.log(data);
+            return data;
         })
         .catch(err => {
             console.warn(err);
