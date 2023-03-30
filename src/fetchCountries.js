@@ -9,11 +9,11 @@ export function fetchCountries(name) {
         })
         .then(data => { 
             console.log(data);
-            // return data;
+            return data;
         })
-        .catch(err => {
-            console.warn(err);
-        })
+        // .catch(err => {
+        //     console.warn(err);
+        // })
 
 };
    

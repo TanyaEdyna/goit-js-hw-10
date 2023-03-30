@@ -38,7 +38,9 @@ function handleSearchCountry(event) {
              Notiflix.Report.warning('Oops, there is no country with that name');
         }
         
-  })
+  })    .catch(err => {
+            console.warn(err);
+        })
 }
 
 
