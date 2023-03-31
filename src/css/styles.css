@@ -20,6 +20,10 @@ body {
   margin-bottom: 16px;
   margin-left: 40px;
 }
+.text_title {
+  padding-left: 40px;
+  font-size: 24px;
+}
 .country-list {
   list-style: none;
   padding-left: 40px;
