@@ -29,7 +29,7 @@ function handleSearchCountry(event) {
         refs.countryList.innerHTML = '';
         refs.countryInfo.innerHTML = '';
          if (data.length > 10) {
-            Notiflix.Report.info('Too many matches found. Please enter a more specific name.');
+            Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
         } else if (data.length >= 2 && data.length <= 10) {
         refs.countryList.insertAdjacentHTML('afterbegin', createCountryListMarkup(data));
         } else if (data.length === 1) {
@@ -39,7 +39,8 @@ function handleSearchCountry(event) {
         }
         
   })    .catch(err => {
-            console.warn(err);
+      Notiflix.Notify.failure('Oops, there is no country with that name');
+      return err;
         })
 }
 
